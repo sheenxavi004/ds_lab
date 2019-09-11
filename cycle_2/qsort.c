@@ -33,3 +33,4 @@ void main()
                 printf(" %d",A[i]);
 	printf("\n");
 }
+
