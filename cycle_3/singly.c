@@ -67,7 +67,7 @@ void insert_p(int x,int p)
 		{		
                 	i=1;
                 	ptr=header;
-                	while(ptr->link!=NULL)
+                	while(ptr!=NULL)
                 	{
                         	if(p==i)
                                 	break;
@@ -77,6 +77,13 @@ void insert_p(int x,int p)
                 	}
                 	if(p>i)
                         	printf("Out of Bounds\n");
+			else if(p==1)
+			{
+				now=(struct node *)malloc(sizeof(struct node));
+				now->item=x;
+				now->link=header;
+				header=now;
+			}
                 	else
                 	{
                         	now=(struct node *)malloc(sizeof(struct node));
