@@ -46,30 +46,51 @@ int find(char name[])
 		return -1;
 	}
 }
+void disp()
+{
+        int i;
+        printf("HASH TABLE\nINDEX  ELEMENTS\n");
+        for(i=0;i<100;i++)
+        {
+                if(hash[i]!=NULL)
+                {
+                        printf("%d     : ",i);
+                        ptr=hash[i];
+                        while(ptr!=NULL)
+                        {
+                                printf("%s %d ",ptr->name,ptr->rollno);
+                                ptr=ptr->link;
+                        }
+                        printf("\n");
+                }
+        }
+}
 void main()
 {
-	int ch,rollno;
-	char name[30];
-	while(1)
-	{
-		printf("\nMenu\n1.Insert\n2.Search\n3.Exit\nChoice : ");
-		scanf("%d",&ch);
-		switch(ch)
-		{
-			case 1: printf("Name : ");
-					scanf(" %[^\n]",name);
-					printf("Roll No : ");
-					scanf("%d",&rollno);
-					insert(name,rollno);
-					break;
-			case 2: printf("Name : ");
-					scanf(" %[^\n]",name);
-					if(find(name)!=-1)
-						printf("Roll No : %d",find(name));
-					else
-						printf("Not Found !\n");
-					break;
-			case 3: exit(0);
-		}
-	}
+        int ch,rollno;
+        char name[30];
+        while(1)
+        {
+                printf("\nMenu\n1.Insert\n2.Search\n3.Display\n4.Exit\nChoice : ");
+                scanf("%d",&ch);
+                switch(ch)
+                {
+                        case 1: printf("Name : ");
+                                scanf(" %[^\n]",name);
+                                printf("Roll No : ");
+                                scanf("%d",&rollno);
+                                insert(name,rollno);
+                                break;
+                        case 2: printf("Name : ");
+                                scanf(" %[^\n]",name);
+                                if(find(name)!=-1)
+                                        printf("Roll No : %d",find(name));
+                                else
+                                        printf("Not Found !\n");
+                                break;
+                        case 3: disp();
+                                break;
+                        case 4: exit(0);
+                }
+        }
 }
